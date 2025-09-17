@@ -1,7 +1,24 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @plugin "@tailwindcss/container-queries";
 @plugin "@tailwindcss/typography";
+
+@theme inline {
+  --color-purple-50: oklch(0.9664 0.0174 293.14);
+  --color-purple-100: oklch(0.9398 0.0327 297.2);
+  --color-purple-200: oklch(0.887 0.0623 296.31);
+  --color-purple-300: oklch(0.8 0.1131 295.2);
+  --color-purple-400: oklch(0.6939 0.180366 294.7953);
+  --color-purple-500: oklch(0.5949 0.2457 293.55);
+  --color-purple-600: oklch(0.5491 0.2734 293.08);
+  --color-purple-700: oklch(0.4997 0.2663 292.08);
+  --color-purple-800: oklch(0.4388 0.2321 292.22);
+  --color-purple-900: oklch(0.3848 0.1985 293.53);
+  --color-purple-950: oklch(0.2865 0.1508 290.92);
+
+  --font-permanent-marker: var(--font-permanent-marker);
+  --font-story-script: var(--font-story-script);
+}
 
 @layer base {
   *,
@@ -10,6 +27,24 @@
   ::backdrop,
   ::file-selector-button {
     border-color: var(--color-gray-200, currentColor);
+  }
+
+  body {
+    @apply font-permanent-marker;
+    letter-spacing: 0.1em;
+  }
+
+  h1,
+  h2 {
+    @apply font-story-script;
+  }
+
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-permanent-marker;
+    letter-spacing: 0.1em !important;
   }
 }
 
@@ -20,7 +55,7 @@
 }
 
 @supports (font: -apple-system-body) and (-webkit-appearance: none) {
-  img[loading='lazy'] {
+  img[loading="lazy"] {
     clip-path: inset(0.6px);
   }
 }
@@ -28,5 +63,45 @@
 a,
 input,
 button {
-  @apply focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-neutral-400 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-50 dark:focus-visible:ring-neutral-600 dark:focus-visible:ring-offset-neutral-900;
+  @apply focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-purple-600 focus-visible:ring-offset-2 focus-visible:ring-offset-purple-50 dark:focus-visible:ring-purple-600 dark:focus-visible:ring-offset-purple-900;
+}
+
+/* Custom scrollbar styling for carousel */
+.overflow-x-auto::-webkit-scrollbar {
+  height: 8px;
+}
+
+.overflow-x-auto::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.overflow-x-auto::-webkit-scrollbar-thumb {
+  background: var(--color-purple-600);
+  border-radius: 4px;
+}
+
+.overflow-x-auto::-webkit-scrollbar-thumb:hover {
+  background: var(--color-purple-700);
+}
+
+/* Custom scrollbar styling for main website vertical scrollbar */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 8px;
+}
+
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+  background: var(--color-purple-600);
+  border-radius: 4px;
+}
+
+html::-webkit-scrollbar-thumb:hover,
+body::-webkit-scrollbar-thumb:hover {
+  background: var(--color-purple-700);
 }
