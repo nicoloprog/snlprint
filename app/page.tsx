@@ -2,6 +2,7 @@ import { Carousel } from "components/carousel";
 import { ThreeItemGrid } from "components/grid/three-items";
 import HeroCarouselContainer from "components/hero-carousel/hero-carousel-container";
 import Footer from "components/layout/footer";
+import Link from "next/link";
 
 export const metadata = {
   description:
@@ -29,9 +30,11 @@ export default function HomePage() {
       <ThreeItemGrid />
       <Carousel />
 
-      <button className="bg-purple-600 hover:bg-purple-500 shadow-lg  hover:shadow-purple-500/30 transition-all duration-300 text-white px-4 py-2 rounded-md mx-auto block my-12 ">
-        Voir tous les produits
-      </button>
+      <Link href="/search">
+        <button className="bg-purple-600 hover:bg-purple-500 shadow-lg  hover:shadow-purple-500/30 transition-all duration-300 text-white px-4 py-2 rounded-md mx-auto block my-12 ">
+          Voir tous les produits
+        </button>
+      </Link>
 
       <Footer />
     </>
