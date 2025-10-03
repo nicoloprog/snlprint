@@ -1,20 +1,33 @@
-'use client';
+"use client";
 
-import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
-import { GridTileImage } from 'components/grid/tile';
-import { useProduct, useUpdateURL } from 'components/product/product-context';
-import Image from 'next/image';
+import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
+import { GridTileImage } from "components/grid/tile";
+import { useProduct, useUpdateURL } from "components/product/product-context";
+import { ProductVariant } from "lib/shopify/types";
+import Image from "next/image";
 
-export function Gallery({ images }: { images: { src: string; altText: string }[] }) {
+export function Gallery({
+  images,
+  selectedVariant,
+}: {
+  images: { src: string; altText: string }[];
+  selectedVariant?: ProductVariant | null;
+}) {
   const { state, updateImage } = useProduct();
   const updateURL = useUpdateURL();
-  const imageIndex = state.image ? parseInt(state.image) : 0;
 
+  // Determine the image index - prioritize manual selection over variant selection
+  const imageIndex = state.image
+    ? parseInt(state.image)
+    : selectedVariant?.image?.url
+      ? images.findIndex((img) => img.src === selectedVariant.image?.url)
+      : 0;
   const nextImageIndex = imageIndex + 1 < images.length ? imageIndex + 1 : 0;
-  const previousImageIndex = imageIndex === 0 ? images.length - 1 : imageIndex - 1;
+  const previousImageIndex =
+    imageIndex === 0 ? images.length - 1 : imageIndex - 1;
 
   const buttonClassName =
-    'h-full px-6 transition-all ease-in-out hover:scale-110 hover:text-black dark:hover:text-white flex items-center justify-center';
+    "h-full px-6 transition-all ease-in-out hover:scale-110 hover:text-black dark:hover:text-white flex items-center justify-center";
 
   return (
     <form>

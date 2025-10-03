@@ -4,6 +4,7 @@ import { getCart } from "lib/shopify";
 import { baseUrl } from "lib/utils";
 import { Permanent_Marker } from "next/font/google";
 import localFont from "next/font/local";
+import Image from "next/image";
 import { ReactNode } from "react";
 import { Toaster } from "sonner";
 import "./globals.css";
@@ -54,29 +55,18 @@ export default async function RootLayout({
       className={`${permanentMarker.variable}  ${storyScript.variable} overflow-x-hidden`}
     >
       <body
-        className={`relative bg-neutral-50 text-black selection:bg-teal-300 dark:bg-black dark:text-white dark:selection:bg-purple-500 dark:selection:text-white overflow-x-hidden`}
+        className={`relative bg-neutral-50 text-black selection:bg-teal-300 dark:bg-black dark:text-white dark:selection:bg-purple-500 dark:selection:text-white overflow-hidden`}
       >
-        {/* <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-(--breakpoint-2xl) h-full -z-1">
-          <div className="absolute -translate-x-[40%] -translate-y-[20%] w-[2000px] h-[2000px]  animate-slow-spin">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-(--breakpoint-2xl) h-full -z-1">
+          <div className="absolute -translate-x-[40%] -translate-y-[20%] w-[max(2000px,100vw)] aspect-square ">
             <Image
-              src="/paint-splash.png"
+              src="/paint-drop.png"
               alt="Sick & Legend"
               fill
               objectFit="contain"
             />
           </div>
         </div>
-
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-(--breakpoint-2xl) h-full -z-1">
-          <div className="absolute bottom-0 translate-x-[20%] -translate-y-[20%] w-[2000px] h-[2000px] animate-slow-spin">
-            <Image
-              src="/paint-splash.png"
-              alt="Sick & Legend"
-              fill
-              objectFit="contain"
-            />
-          </div>
-        </div> */}
 
         <CartProvider cartPromise={cart}>
           <Navbar />

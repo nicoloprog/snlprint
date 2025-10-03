@@ -53,6 +53,7 @@ export function VariantSelector({
             // Filter out invalid options and check if the option combination is available for sale.
             const filtered = Object.entries(optionParams).filter(
               ([key, value]) =>
+                value !== undefined &&
                 options.find(
                   (option) =>
                     option.name.toLowerCase() === key &&

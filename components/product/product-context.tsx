@@ -1,10 +1,15 @@
-'use client';
+"use client";
 
-import { useRouter, useSearchParams } from 'next/navigation';
-import React, { createContext, useContext, useMemo, useOptimistic } from 'react';
+import { useRouter, useSearchParams } from "next/navigation";
+import React, {
+  createContext,
+  useContext,
+  useMemo,
+  useOptimistic,
+} from "react";
 
 type ProductState = {
-  [key: string]: string;
+  [key: string]: string | undefined;
 } & {
   image?: string;
 };
@@ -32,12 +37,13 @@ export function ProductProvider({ children }: { children: React.ReactNode }) {
     getInitialState(),
     (prevState: ProductState, update: ProductState) => ({
       ...prevState,
-      ...update
+      ...update,
     })
   );
 
   const updateOption = (name: string, value: string) => {
-    const newState = { [name]: value };
+    // Clear the image state when a variant option changes to allow variant image to show
+    const newState = { [name]: value, image: undefined };
     setOptimisticState(newState);
     return { ...state, ...newState };
   };
@@ -52,18 +58,20 @@ export function ProductProvider({ children }: { children: React.ReactNode }) {
     () => ({
       state,
       updateOption,
-      updateImage
+      updateImage,
     }),
     [state]
   );
 
-  return <ProductContext.Provider value={value}>{children}</ProductContext.Provider>;
+  return (
+    <ProductContext.Provider value={value}>{children}</ProductContext.Provider>
+  );
 }
 
 export function useProduct() {
   const context = useContext(ProductContext);
   if (context === undefined) {
-    throw new Error('useProduct must be used within a ProductProvider');
+    throw new Error("useProduct must be used within a ProductProvider");
   }
   return context;
 }
@@ -74,7 +82,11 @@ export function useUpdateURL() {
   return (state: ProductState) => {
     const newParams = new URLSearchParams(window.location.search);
     Object.entries(state).forEach(([key, value]) => {
-      newParams.set(key, value);
+      if (value !== undefined) {
+        newParams.set(key, value);
+      } else {
+        newParams.delete(key);
+      }
     });
     router.push(`?${newParams.toString()}`, { scroll: false });
   };
