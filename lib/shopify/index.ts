@@ -364,10 +364,6 @@ export async function getCollections(): Promise<Collection[]> {
 }
 
 export async function getMenu(handle: string): Promise<Menu[]> {
-  "use cache";
-  cacheTag(TAGS.collections);
-  cacheLife("days");
-
   const res = await shopifyFetch<ShopifyMenuOperation>({
     query: getMenuQuery,
     variables: {
@@ -490,11 +486,11 @@ export async function revalidate(req: NextRequest): Promise<NextResponse> {
   }
 
   if (isCollectionUpdate) {
-    revalidateTag(TAGS.collections, 'max');
+    revalidateTag(TAGS.collections, "max");
   }
 
   if (isProductUpdate) {
-    revalidateTag(TAGS.products, 'max');
+    revalidateTag(TAGS.products, "max");
   }
 
   return NextResponse.json({ status: 200, revalidated: true, now: Date.now() });
