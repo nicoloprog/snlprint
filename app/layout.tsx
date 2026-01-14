@@ -32,7 +32,7 @@ const permanentMarker = Permanent_Marker({
 const storyScript = localFont({
   src: [
     {
-      path: "../public/fonts/StoryScript-Regular.ttf",
+      path: "./fonts/StoryScript-Regular.ttf",
       weight: "400",
       style: "normal",
     },
@@ -52,7 +52,7 @@ export default async function RootLayout({
   return (
     <html
       lang="en"
-      className={`${permanentMarker.variable}  ${storyScript.variable} overflow-x-hidden`}
+      className={`${permanentMarker.variable} ${storyScript.variable} ${permanentMarker.className} ${storyScript.className} overflow-x-hidden`}
     >
       <body
         className={`relative bg-neutral-50 text-black selection:bg-teal-300 dark:bg-black dark:text-white dark:selection:bg-purple-500 dark:selection:text-white overflow-hidden`}
@@ -67,7 +67,6 @@ export default async function RootLayout({
             />
           </div>
         </div>
-
         <CartProvider cartPromise={cart}>
           <Navbar />
           <main>

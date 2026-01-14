@@ -3,6 +3,10 @@
 @plugin "@tailwindcss/container-queries";
 @plugin "@tailwindcss/typography";
 
+:root {
+  /* Font variables are set by Next.js font loader via className on <html> element */
+}
+
 @theme inline {
   --color-purple-50: oklch(0.9664 0.0174 293.14);
   --color-purple-100: oklch(0.9398 0.0327 297.2);
@@ -15,9 +19,6 @@
   --color-purple-800: oklch(0.4388 0.2321 292.22);
   --color-purple-900: oklch(0.3848 0.1985 293.53);
   --color-purple-950: oklch(0.2865 0.1508 290.92);
-
-  --font-permanent-marker: var(--font-permanent-marker);
-  --font-story-script: var(--font-story-script);
 }
 
 @layer base {
@@ -36,20 +37,20 @@
   }
 
   body {
-    @apply font-permanent-marker;
+    font-family: var(--font-permanent-marker);
     letter-spacing: 0.1em;
   }
 
   h1,
   h2 {
-    @apply font-story-script;
+    font-family: var(--font-story-script);
   }
 
   h3,
   h4,
   h5,
   h6 {
-    @apply font-permanent-marker;
+    font-family: var(--font-permanent-marker);
     letter-spacing: 0.1em !important;
   }
 }
