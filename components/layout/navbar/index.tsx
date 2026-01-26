@@ -27,10 +27,10 @@ export async function Navbar() {
             className="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6"
           >
             <Image
-              src="/sicknlegend-logo.png"
+              src="/sicknlegendlogo.png"
               alt="Sick & Legend"
-              width={35}
-              height={55}
+              width={75}
+              height={95}
             />
           </Link>
           {menu.length ? (
