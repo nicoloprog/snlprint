@@ -23,6 +23,11 @@ export const metadata = {
   },
 };
 
+export const viewport = {
+  themeColor: "#000000",
+  colorScheme: "dark" as const,
+};
+
 const permanentMarker = Permanent_Marker({
   variable: "--font-permanent-marker",
   subsets: ["latin"],
@@ -55,7 +60,7 @@ export default async function RootLayout({
       className={`${permanentMarker.variable} ${storyScript.variable} ${permanentMarker.className} ${storyScript.className} overflow-x-hidden`}
     >
       <body
-        className={`relative bg-neutral-50 text-black selection:bg-teal-300 dark:bg-black dark:text-white dark:selection:bg-purple-500 dark:selection:text-white overflow-hidden`}
+        className={`relative bg-black text-white selection:bg-purple-500 selection:text-white overflow-hidden`}
       >
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-(--breakpoint-2xl) h-full -z-1">
           <div className="absolute -translate-x-[40%] -translate-y-[20%] w-[max(2000px,100vw)] aspect-square ">

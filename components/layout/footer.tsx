@@ -80,10 +80,11 @@ export default async function Footer() {
           href="/"
         >
           <Image
-            src="/sicknlegend-logo.png"
+            src="/sicknlegendlogo.png"
             alt="Sick & Legend"
-            width={66}
-            height={102}
+            width={240}
+            height={304}
+            className="h-auto w-[120px] md:w-[220px]"
           />
         </Link>
       </div>

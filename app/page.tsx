@@ -20,18 +20,17 @@ export default function HomePage() {
       <div className="max-w-(--breakpoint-2xl) mx-auto px-4 mb-8">
         <h1 className="text-6xl mb-4">Sick & Legend</h1>
         <p className="max-w-6xl">
-          Avec son design graffiti audacieux et ses couleurs percutantes, le
-          logo Sick & Legend incarne l&apos;attitude urbaine, la créativité et
-          l&apos;énergie sans limite. Pensé pour ceux qui osent se démarquer, il
-          est bien plus qu&apos;un simple visuel : c&apos;est une déclaration de
-          style et de caractère.
+          With its bold graffiti design and striking colors, the Sick & Legend
+          logo embodies urban attitude, creativity, and boundless energy. Made
+          for those who dare to stand out, it&apos;s far more than just a
+          visual — it&apos;s a statement of style and character.
         </p>
       </div>
       <ThreeItemGrid />
       <CarouselContainer />
       <Link href="/search">
         <button className="bg-purple-600 hover:bg-purple-500 shadow-lg  hover:shadow-purple-500/30 transition-all duration-300 text-white px-4 py-2 rounded-md mx-auto block my-12 ">
-          Voir tous les produits
+          View all products
         </button>
       </Link>
       <Footer />
